@@ -1,14 +1,14 @@
 import db from "../../database/db.js";
-import { DataTypes } from "sequelize";
+import { Sequelize, DataTypes } from 'sequelize';
 
 
-const RegistrarUsuarioC = db.define('Usuario', {
+const RegistrarUsuarioC = db.define('usuario', {
     id_usuario: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
-        autoIncrement: true
     },
-    Nombre: {
+    nombre: {
         type: DataTypes.STRING(60),
         allowNull: false
     },
@@ -38,7 +38,7 @@ const RegistrarUsuarioC = db.define('Usuario', {
         type: DataTypes.ENUM('administrador', 'mesero', 'Cliente'),
         allowNull: false
     },
-    clave: {
+    contrasena: {
         type: DataTypes.STRING(12),
         allowNull: false
     },
@@ -57,15 +57,7 @@ const RegistrarUsuarioC = db.define('Usuario', {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
-    created_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
-    },
-    updated_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
-    }
-}, {
-});
+}, 
+);
 
-export default  RegistrarUsuarioC;
+export default RegistrarUsuarioC;
